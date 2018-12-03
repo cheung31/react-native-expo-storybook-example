@@ -7,41 +7,31 @@ import { linkTo } from '@storybook/addon-links';
 import { text } from '@storybook/addon-knobs';
 
 import {
-  Button, Welcome,
+  Button, Welcome, CenterView
 } from '../src/stories/components';
+import {
+  Top,
+} from '../src/stories/screens';
 
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+storiesOf('Welcome', module)
+  .add('to Storybook', () => <Welcome showApp={linkTo('Components')} />);
 
-storiesOf('Button', module)
-  .add('with text', () => {
+storiesOf('Components', module)
+  .add('Button', () => {
     const label = text('Label', 'Hello Button');
     return (
-      <CenteredView>
+      <CenterView>
         <Button onPress={action('clicked-text')}>
           <Text>{label}</Text>
         </Button>
-      </CenteredView>
-  )})
-  .add('with some emoji', () => (
-    <CenteredView>
-      <Button onPress={action('clicked-emoji')}>
-        <Text>😀 😎 👍 💯</Text>
-      </Button>
-    </CenteredView>
-  ));
+      </CenterView>
+  )});
 
-
-const CenteredView = ({ children }: any) => (
-  <View style={style}>
-    {children}
-  </View>
-);
-
-const style = {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#F5FCFF',
-};
-  
+storiesOf('Screens', module)
+  .add('Top', () => {
+    const title = text('Title', 'Hello Title');
+    const buttonLabel = text('ButtonLabel', 'Hello Button');
+    return (
+      <Top title={title} buttonLabel={buttonLabel} />
+  )});
