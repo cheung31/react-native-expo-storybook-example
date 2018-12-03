@@ -24,6 +24,7 @@
     "babel-core": "^6.26.3",
     "babel-preset-expo": "^5.0.0",
     "babel-runtime": "^6.26.0",
+    "expo-cli": "^2.6.1",
     "prop-types": "^15.6.2",
     "react-dom": "16.5.0"
   },
