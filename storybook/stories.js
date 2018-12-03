@@ -1,26 +1,47 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
+import { text } from '@storybook/addon-knobs';
 
 import {
-  Button, CenterView, Welcome,
-} from '../src/stories';
+  Button, Welcome,
+} from '../src/stories/components';
 
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
-  .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-  .add('with text', () => (
-    <Button onPress={action('clicked-text')}>
-      <Text>Hello Button</Text>
-    </Button>
-  ))
+  .add('with text', () => {
+    const label = text('Label', 'Hello Button');
+    return (
+      <CenteredView>
+        <Button onPress={action('clicked-text')}>
+          <Text>{label}</Text>
+        </Button>
+      </CenteredView>
+  )})
   .add('with some emoji', () => (
-    <Button onPress={action('clicked-emoji')}>
-      <Text>😀 😎 👍 💯</Text>
-    </Button>
+    <CenteredView>
+      <Button onPress={action('clicked-emoji')}>
+        <Text>😀 😎 👍 💯</Text>
+      </Button>
+    </CenteredView>
   ));
+
+
+const CenteredView = ({ children }: any) => (
+  <View style={style}>
+    {children}
+  </View>
+);
+
+const style = {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#F5FCFF',
+};
+  
