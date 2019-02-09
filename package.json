@@ -9,10 +9,14 @@
     "storybook:device": "expo start --config ./storybook/app.json",
     "storybook:publish": "expo publish --config ./storybook/app.json"
   },
+  "jest": {
+    "preset": "jest-expo"
+  },
   "dependencies": {
-    "expo": "^31.0.2",
+    "@expo/samples": "2.1.1",
+    "expo": "^32.0.0",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^4.0.11",
@@ -25,6 +29,7 @@
     "babel-preset-expo": "^5.0.0",
     "babel-runtime": "^6.26.0",
     "expo-cli": "^2.6.1",
+    "jest-expo": "^32.0.0",
     "prop-types": "^15.6.2",
     "react-dom": "16.5.0"
   },
