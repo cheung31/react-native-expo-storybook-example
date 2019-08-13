@@ -1,5 +1,5 @@
 import React from 'react';
-import { Constants } from 'expo';
+import Constants from 'expo-constants';
 import { StyleSheet, Text, View } from 'react-native';
 import StoryBook from './storybook';
 
@@ -7,7 +7,7 @@ export default class App extends React.Component {
   render() {
     switch(Constants.manifest.slug) {
       case 'react-native-expo-storybook-example-storybook':
-        return <StoryBook />
+        return <StoryBook />;
       default:
         return (
           <View style={styles.container}>
